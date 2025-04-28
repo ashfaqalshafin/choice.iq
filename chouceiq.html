@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choice IQ | Ashfaq Al Shafin</title> <script src="https://cdn.tailwindcss.com"></script>
+    <head>
+    <!-- ... existing head content ... -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9280900965782857"
+     crossorigin="anonymous"></script>
+    <!-- ... rest of head content ... -->
+</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #3b82f6; /* blue-500 */
+            --secondary-color: #>0ea5e9; /* sky-500 */
+            --text-dark: #1e293b; /* slate-800 */
+            --text-light: #f8fafc; /* slate-50 */
+            --bg-light: #f8fafc; /* slate-50 */
+            --bg-dark: #0f172a; /* slate-900 */
+            --accent-color: #ec4899; /* pink-500 */
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .hero-min-height { min-height: 100vh; }
+
+        /* Enhanced Navigation Styles */
+        #main-header { transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out; }
+        #main-header.header-scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+            backdrop-filter: blur(12px);
+        }
+        #main-header.header-scrolled .nav-link,
+        #main-header.header-scrolled #mobile-menu-button { color: #334155; } /* slate-700 */
+        #main-header.header-scrolled .nav-link:hover { color: var(--primary-color); }
+        #main-header.header-scrolled .site-title { color: var(--primary-color); }
+
+        .nav-link, #mobile-menu-button, .site-title { color: var(--text-light); transition: color 0.3s ease; }
+        .nav-link:hover { color: #e2e8f0; } /* slate-200 */
+        .site-title { color: var(--text-light); } /* Ensure title is white initially */
+
+        .nav-link { position: relative; padding-bottom: 5px; } /* Increased padding */
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: currentColor; transition: width 0.3s ease-out; }
+        .nav-link:hover::after { width: 100%; }
+        #main-header.header-scrolled .nav-link::after { background-color: var(--primary-color); }
+        #main-header:not(.header-scrolled) .nav-link::after { background-color: var(--secondary-color); } /* Sky blue underline for transparent header */
+
+        #mobile-menu {
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
+            transform-origin: top; transform: translateY(-10px) scaleY(0.98); opacity: 0; pointer-events: none;
+            background-color: rgba(255, 255, 255, 0.98); /* More opaque */
+            backdrop-filter: blur(10px);
+        }
+        #mobile-menu:not(.hidden) { transform: translateY(0) scaleY(1); opacity: 1; pointer-events: auto; }
+
+        /* Progress bar styling */
+        .progress-bar-bg { background-color: #e2e8f0; overflow: hidden; border-radius: 9999px; }
+        .progress-bar-fill { background-image: linear-gradient(to right, #38bdf8, var(--primary-color)); transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1); width: 0; border-radius: 9999px; }
+
+        /* Portfolio item hover effect */
+        .portfolio-item .details-overlay { opacity: 0; transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; transform: translateY(10px); }
+        .portfolio-item:hover .details-overlay { opacity: 1; transform: translateY(0); }
+        .portfolio-item img { transition: transform 0.4s ease-in-out; }
+        .portfolio-item:hover img { transform: scale(1.05); }
+
+        /* Fade-in animation */
+        .fade-in-section { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* Background patterns */
+        .pattern-bg { background-color: #ffffff; background-image: radial-gradient(#e2e8f0 0.6px, transparent 0.6px); background-size: 18px 18px; }
+        .dark-pattern-bg { background-color: var(--bg-dark); background-image: radial-gradient(rgba(255,255,255,0.07) 0.6px, transparent 0.6px); background-size: 20px 20px; }
+
+        /* Focus styles */
+        *:focus-visible { outline: 3px solid #60a5fa; outline-offset: 3px; border-radius: 6px; }
+        .form-input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); outline: none; }
+
+        /* Tap target size */
+        .cta-button, .contact-link-card, .social-link, #mobile-menu-button, #mobile-menu a, .payment-logo-container a, .brand-logo-container a { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding-left: 0.75rem; padding-right: 0.75rem; }
+        #mobile-menu a { width: 100%; justify-content: flex-start; padding: 0.9rem 1.35rem; }
+        .cta-button { padding: 0.8rem 1.5rem; }
+        .payment-logo-container a, .brand-logo-container a { padding: 0.5rem; }
+
+        /* Section Heading Style */
+        .section-heading { font-size: 2rem; font-weight: 700; margin-bottom: 3rem; text-align: center; color: var(--text-dark); position: relative; padding-bottom: 0.75rem; }
+        .section-heading::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--primary-color); border-radius: 2px; }
+        .dark-section .section-heading { color: var(--text-light); }
+        .dark-section .section-heading::after { background-color: var(--secondary-color); }
+
+        /* Logo Styling */
+        .payment-logo-container img, .brand-logo-container img {
+            height: 38px; /* Increased height */
+            max-width: 120px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+            filter: grayscale(50%);
+        }
+        .payment-logo-container a:hover img, .brand-logo-container a:hover img { opacity: 1; transform: scale(1.1); filter: grayscale(0%); }
+        .payment-logo-container img[alt="Bank"] { height: 32px; } /* Keep bank icon slightly smaller */
+        .brand-logo-container img[alt="v0.dev"] { height: 28px; } /* Adjust specific brand heights */
+        .brand-logo-container img[alt="Lovable.dev"] { height: 36px; }
+
+        /* Subscriber Count Styling */
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.08); /* Semi-transparent white on dark bg */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1rem 1.5rem; /* p-4 sm:p-6 */
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .stat-card:hover {
+             background-color: rgba(255, 255, 255, 0.15);
+             transform: translateY(-3px);
+        }
+        .stat-number {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            color: var(--text-light);
+            line-height: 1.2;
+        }
+        .stat-label {
+            font-size: 0.875rem; /* text-sm */
+            color: #cbd5e1; /* slate-300 */
+            margin-top: 0.25rem; /* mt-1 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem; /* space-x-2 */
+        }
+        .stat-label ion-icon {
+            font-size: 1.1rem; /* Adjust icon size */
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold site-title">Choice IQ</a> <div class="hidden md:flex items-center space-x-5 lg:space-x-7">
+                <a href="#home" class="nav-link font-medium text-sm tracking-wide">Home</a>
+                <a href="#about" class="nav-link font-medium text-sm tracking-wide">About</a>
+                <a href="#services" class="nav-link font-medium text-sm tracking-wide">Services</a>
+                <a href="#portfolio" class="nav-link font-medium text-sm tracking-wide">Portfolio</a>
+                <a href="#tech" class="nav-link font-medium text-sm tracking-wide">Tech & Tools</a> <a href="#contact" class="nav-link font-medium text-sm tracking-wide">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" aria-label="Open Menu" aria-expanded="false" aria-controls="mobile-menu" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white rounded p-1">
+                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden shadow-xl rounded-b-lg absolute top-full left-0 right-0 mx-2 border-t border-gray-200/50">
+             <a href="#home" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-5 py-3 font-medium rounded-t-lg">Home</a>
+             <a href="#about" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-5 py-3 font-medium">About</a>
+             <a href="#services" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-5 py-3 font-medium">Services</a>
+             <a href="#portfolio" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-5 py-3 font-medium">Portfolio</a>
+             <a href="#tech" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-5 py-3 font-medium">Tech & Tools</a>
+             <a href="#contact" class="block text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-5 py-3 font-medium rounded-b-lg">Contact</a>
+        </div>
+    </header>
+
+    <section id="home" class="hero-min-height flex items-center justify-center text-center bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white px-4 sm:px-6 relative overflow-hidden">
+         <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="z-10 fade-in-section is-visible max-w-4xl">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight tracking-tight">
+                Welcome to <span class="text-sky-400">Choice IQ</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                Digital solutions by Ashfaq Al Shafin. Specializing in modern web development and impactful visual design from <span class="font-medium">Sylhet, Bangladesh</span>.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-10">
+                <div class="stat-card w-full sm:w-auto">
+                    <div id="youtube-subs-count" class="stat-number">---</div>
+                    <div class="stat-label">
+                        <ion-icon name="logo-youtube" class="text-red-500"></ion-icon>
+                        <span>YouTube Subscribers</span>
+                    </div>
+                </div>
+                 <div class="stat-card w-full sm:w-auto">
+                     <div id="telegram-subs-count" class="stat-number">
+                        <a href="https://t.me/choiceiq" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 text-2xl transition-colors">Join Us</a>
+                    </div>
+                    <div class="stat-label">
+                        <ion-icon name="paper-plane-outline" class="text-sky-400"></ion-icon>
+                        <span>Telegram Channel</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-5">
+                <a href="#portfolio" class="cta-button w-full sm:w-auto bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600 text-white font-semibold py-3 px-7 rounded-lg shadow-lg transform hover:-translate-y-1 transition duration-300 ease-in-out inline-flex items-center justify-center"><ion-icon name="briefcase-outline" class="mr-2 text-xl"></ion-icon>View My Work</a>
+                <a href="#contact" class="cta-button w-full sm:w-auto bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 px-7 rounded-lg shadow-lg transform hover:-translate-y-1 transition duration-300 ease-in-out inline-flex items-center justify-center"><ion-icon name="mail-outline" class="mr-2 text-xl"></ion-icon>Let's Talk</a>
+            </div>
+        </div>
+    </section>
+    <!-- Ad Unit 1 -->
+    <div class="container mx-auto px-4 sm:px-6 py-8">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9280900965782857"
+         data-ad-slot="6060236183"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+    <section id="about" class="py-20 md:py-28 bg-white fade-in-section">
+        <div class="container mx-auto px-4 sm:px-6">
+             <h2 class="section-heading">About Me</h2> <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-center">
+                <div class="lg:col-span-2 text-center lg:text-left">
+                     <img src="https://i.postimg.cc/HnjbTqS1/ac0e48f5ba34358f301cce5f20540e4c.jpg?text=Ashfaq" alt="Ashfaq Al Shafin - Professional Portrait" class="rounded-xl shadow-2xl mx-auto w-3/4 sm:w-2/3 lg:w-full max-w-md lg:max-w-none transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/500x500/cccccc/ffffff?text=Image+Error';">
+                </div>
+                <div class="lg:col-span-3">
+                    <h3 class="text-2xl md:text-3xl font-semibold mb-5 text-slate-800">Crafting Digital Experiences</h3>
+                    <p class="text-base md:text-lg text-slate-600 mb-4 leading-relaxed">Hello! I'm Ashfaq Al Shafin, the mind behind Choice IQ. As a 17-year-old student from Sylhet, Bangladesh, my passion lies at the intersection of technology and creativity. I'm deeply immersed in learning front-end web development, focusing on building clean, responsive, and user-friendly websites using modern tools like HTML5 and CSS3 (including frameworks like Tailwind).</p>
+                    <p class="text-base md:text-lg text-slate-600 mb-6 leading-relaxed">Beyond coding, I have a strong aptitude for visual communication, particularly in <span class="font-semibold text-blue-600">thumbnail design</span> for digital content creators. I understand the importance of first impressions and strive to create graphics that grab attention and convey the right message. I'm constantly exploring new design trends and tools (like Figma and Canva) to enhance my skills. I'm eager to collaborate on projects where I can contribute both my technical and creative abilities.</p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="https://wa.me/8801797488769" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="contact-link-card flex-1 bg-slate-50 hover:bg-white p-4 rounded-lg shadow hover:shadow-lg transition duration-300 border border-slate-200 flex items-center space-x-3 group"><ion-icon name="logo-whatsapp" class="text-2xl text-green-500 group-hover:scale-110 transition-transform"></ion-icon><span class="font-medium text-slate-700 group-hover:text-green-600">WhatsApp</span></a>
+                        <a href="https://t.me/choiceiq" target="_blank" rel="noopener noreferrer" aria-label="Contact on Telegram" class="contact-link-card flex-1 bg-slate-50 hover:bg-white p-4 rounded-lg shadow hover:shadow-lg transition duration-300 border border-slate-200 flex items-center space-x-3 group"><ion-icon name="paper-plane-outline" class="text-2xl text-blue-500 group-hover:scale-110 transition-transform"></ion-icon><span class="font-medium text-slate-700 group-hover:text-blue-600">Telegram</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Ad Unit 2 -->
+    <div class="container mx-auto px-4 sm:px-6 py-8">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9280900965782857"
+         data-ad-slot="6060236183"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+    <section id="services" class="py-20 md:py-28 pattern-bg fade-in-section">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-heading">Services & Payments</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-slate-800">What I Offer</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 p-5 bg-white rounded-lg shadow-md border border-slate-100 hover:shadow-lg transition-shadow duration-300"><ion-icon name="code-slash-outline" class="text-3xl text-blue-500 mt-1 flex-shrink-0"></ion-icon><div><h4 class="font-semibold text-lg text-slate-800 mb-1">Front-End Development</h4><p class="text-sm text-slate-600 leading-relaxed">Building responsive and modern website interfaces using HTML5, CSS3, and Tailwind CSS. Focusing on clean code and user experience.</p><p class="text-xs text-slate-500 mt-2">Proficiency: HTML (20%), CSS (Learning)</p></div></div>
+                        <div class="flex items-start space-x-4 p-5 bg-white rounded-lg shadow-md border border-slate-100 hover:shadow-lg transition-shadow duration-300"><ion-icon name="image-outline" class="text-3xl text-emerald-500 mt-1 flex-shrink-0"></ion-icon><div><h4 class="font-semibold text-lg text-slate-800 mb-1">Thumbnail & Graphic Design</h4><p class="text-sm text-slate-600 leading-relaxed">Creating eye-catching thumbnails for YouTube and social media, along with basic graphic design assets using tools like Figma and Canva.</p><p class="text-xs text-slate-500 mt-2">Proficiency: Thumbnail Design (50%)</p></div></div>
+                    </div>
+                </div>
+                <div>
+                     <h3 class="text-2xl font-semibold mb-6 text-slate-800">Accepted Payments</h3>
+                     <p class="text-slate-600 mb-6 text-sm md:text-base">For project collaborations, I accept payments through the following secure platforms popular in Bangladesh:</p>
+                     <div class="bg-white p-6 rounded-lg shadow-md border border-slate-100">
+                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 payment-logo-container items-center justify-items-center">
+                            <a href="#" title="bKash" class="block text-center">
+                                <img src="https://media-hosting.imagekit.io/535f926cd3f5457e/New%20Project%20[0D43D03].png?Expires=1840108989&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=wiZ2sJEl0a~82OhbhBxC5by5dVLhBp1FRcUoPhO1MBa21KkWB2m3bUAlQrTTweuXiWDhhev9boMfpXOrk9XmBIuKHOpu-ui7qVoHBS72X66rNrsJG5psxkvVoNI82m~oUT08WT8OpX~MRGf~B7fnxrN7w~KpIupazQhxX1ezCT8WVP7EkchF1Qzk9uwrOaVNalXiee6hHFRFBiUdbfBTFbZyrXl7xP67TetBcRAWv5g9YsQdNGIOWUy0mwsJv9m0Mco~tOGgQP~g0OPT8QZo3Yc-SvF7iKgzVyM-mTjjt6sRy4jGD3einOwJLcIIRGA9qT6qd8mqFVEJ8joPmeAq5w__" alt="bKash" class="mx-auto" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-xs text-red-600 font-semibold\'>bKash</span>';">
+                            </a>
+                             <a href="#" title="Nagad" class="block text-center">
+                                <img src="https://media-hosting.imagekit.io/26c1fac11a514c0d/1679248787Nagad-Logo.png?Expires=1840109070&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dzoRZ2C0FWBZPcPi9IrQno7OoK6ZLkFg3WESh~XF6Wi61A9EJSZNRRZtEJzy1PFgnsKuaAQgsW0ws5dM2Abov6ZwwM2fLBrqKfeS15HfCEL6rwTrPywyNABHs2T5Q7LN42C3iVb2JfLXLtqpcfWbWd4pieogR4YIQOeF1lQCHkXzHYWt6u31EKGFWeCbs3PNd8-lQYgQzE~2RFe9pV46w87iMFU-gCC0utRGruTqzHF0DargEI4VNYjMLKeG3AFSRw96p6c4mfeL8~qKTHvw0JrI~aTCAsM4W5BJfMrTjhFyJIBPwVSGvFoZezjsb7iYF6HDoQIGeAuXGIUNLcpIbg__" alt="Nagad" class="mx-auto" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-xs text-orange-600 font-semibold\'>Nagad</span>';">
+                            </a>
+                             <a href="#" title="Rocket" class="block text-center">
+                                <img src="https://media-hosting.imagekit.io/a32e913a0fff4ba3/New%20Project%20[3E13F13].png?Expires=1840109108&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=D7VpWbiJcR8mQCt5B2U1heIgfLWqDO98kRglVHsrPIWYIpS6mfshj~r-NiC5kzBg74bxZb~1xpthu0V7myel6aAvmJBfZpB~EtGIo3XQEialQDmqVWTCLcoKl6sAuIHdk5YqMOTc8cjGLGEPvcg3aqBMtGy7LjzDEphrilhc~dVWGotHe3Gyr~IHgZ~o0OUlxefNxYNA5rd5ZU7HfUk9nX6kYfczCgUiDmzVcCU7zHhbF6tZSx5un80Oh-EXnxqD73nzdRH-QVn2ti85KO5Int7e0ix7tfnYfoXxAFnZ9dat4ySnByB7QaFAnrbLC4AbuzTgstDmmGbQBkclH9i4vA__" alt="Rocket" class="mx-auto" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-xs text-purple-600 font-semibold\'>Rocket</span>';">
+                            </a>
+                             <a href="#" title="Bank Transfer" class="block text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /> </svg>
+                                <span class="sr-only">Bank Transfer</span>
+                            </a>
+                         </div>
+                     </div>
+                     <p class="text-xs text-slate-500 mt-4 text-center md:text-left">Please contact me for specific payment details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Ad Unit 3 -->
+    <div class="container mx-auto px-4 sm:px-6 py-8">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9280900965782857"
+         data-ad-slot="6060236183"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+    <section id="portfolio" class="py-20 md:py-28 bg-white fade-in-section">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-heading">Featured Work</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <div class="portfolio-item group bg-slate-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"><div class="relative aspect-video"><img src="https://i.postimg.cc/rw2g9pnd/20250424-231628.jpg?text=Thumbnail's Degine" alt="Degine Project" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x338/cccccc/ffffff?text=Image+Error';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-5 details-overlay"><div><h4 class="text-lg font-semibold text-white mb-1">Thumbnail Designer | 200+ Projects Completed</h4><p class="text-xs text-blue-200 uppercase tracking-wider"></p></div></div></div><div class="p-5"><p class="text-slate-600 text-sm mb-3 leading-relaxed">Thumbnail Designer | 200+ Projects
+Designed 200+ YouTube thumbnails with 100% client satisfaction. Clean, clickable, and custom-made for results.</p><p class="text-xs text-slate-500 font-medium">Tools : Pscc,Others AI Tools</p></div></div>
+                <div class="portfolio-item group bg-slate-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"><div class="relative aspect-video"><img src="https://placehold.co/600x338/10B981/FFFFFF?text=Gaming+Thumbnails" alt="Gaming Channel Thumbnails" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x338/cccccc/ffffff?text=Image+Error';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-5 details-overlay"><div><h4 class="text-lg font-semibold text-white mb-1">Example Text</h4><p class="text-xs text-emerald-200 uppercase tracking-wider">Graphic Design</p></div></div></div><div class="p-5"><p class="text-slate-600 text-sm mb-3 leading-relaxed">Designed a set of vibrant and engaging YouTube thumbnails for a local Bangladeshi gaming content creator. Focused on high contrast, clear text, and incorporating game branding effectively.</p><p class="text-xs text-slate-500 font-medium">Tools: Figma / Canva</p></div></div>
+                <div class="portfolio-item group bg-slate-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"><div class="relative aspect-video"><img src="https://placehold.co/600x338/EC4899/FFFFFF?text=Landing+Page+UI" alt="Landing Page UI Concept" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x338/cccccc/ffffff?text=Image+Error';"><div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-5 details-overlay"><div><h4 class="text-lg font-semibold text-white mb-1">Example Text</h4><p class="text-xs text-pink-200 uppercase tracking-wider">UI Design</p></div></div></div><div class="p-5"><p class="text-slate-600 text-sm mb-3 leading-relaxed">Created a UI concept for a product landing page, emphasizing clear call-to-actions, visual hierarchy, and a modern aesthetic suitable for tech products.</p><p class="text-xs text-slate-500 font-medium">Tools: Figma</p></div></div>
+            </div>
+            <p class="text-center mt-16 text-slate-600">Interested in seeing more? <a href="#contact" class="text-blue-600 hover:underline font-medium">Let's connect!</a></p>
+        </div>
+    </section>
+
+    <section id="tech" class="py-20 md:py-28 dark-pattern-bg text-slate-300 fade-in-section dark-section">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-heading">Tech & Tools I Use</h2> <p class="text-center max-w-2xl mx-auto mb-12 text-base md:text-lg leading-relaxed">
+                I leverage modern tools and technologies to bring ideas to life. My experience includes working with various platforms and collaborating with content creators in Bangladesh.
+            </p>
+             <h3 class="text-xl font-semibold text-center mb-6 text-white">Featured Tools & Inspirations</h3>
+            <div class="max-w-4xl mx-auto bg-slate-800/50 p-6 sm:p-8 rounded-xl shadow-lg border border-slate-700">
+                <div class="grid grid-cols-2 gap-8 brand-logo-container items-center justify-items-center">
+                    <a href="https://v0.dev/" target="_blank" rel="noopener noreferrer" title="v0.dev by Vercel" class="block text-center">
+                        <img src="https://i.postimg.cc/3xHNJMN5/New-Project-65-CF698.png?Expires=1840109648&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=agHoyC1I8e33QvMo6OPmIhvy8xq5FxzKyOiSSmkI16JWGZUNnmqPOS~y-5bCn~9ieyUpPQAwYQVbKerPYl8eI2Gs2g6LJOl4oKQBbWuRtwUiUTSAAZwhmFLnGwsfEQEs3KnaHZqQf8mterlnbLR3MDBIsguzcXTg7Icvfc8HXNiG3tVRLDqKLHXgTq4RobWApsidChgc8Xnock1PYPO3Xntu-ABnsL9M2Kh0VLjwX7gRw9aLJRQSeZuopdVTGyr5QU9exDXuR~Y8b5TfRf1zgb28fY0puTW8y6pDwJ63K9NyU2Mh5kh1QUiByG1Gl6lB6D0auzLBYPcmIEmD8mqY3g__" alt="v0.dev" class="mx-auto" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-xs text-gray-400 font-semibold\'>v0.dev</span>';">
+                    </a>
+                    <a href="https://lovable.dev/" target="_blank" rel="noopener noreferrer" title="Lovable.dev" class="block text-center">
+                        <img src="https://i.postimg.cc/nLpXT8fY/New-Project-3-FAA8-FB.png?Expires=1840109595&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=vfPBMlkz~jnuv9eWiJGtZ1yCe7UrwUHSofQ5CLBAWNfCpGF7mhUIr4sX215b1-xwdP~tu6WSBPr-EOaq3qztyhZVlMexBwA5MQU3yezg90PPX6BYzy-d1vIpftvBYODIU3iKORN8qI9pGXTzzLI97NvlziWCzCiAUBDIY51prICOfNlol8aWXfmlisy7NQGar43ZtBNjjeTtp7XyDdZgH8oUjpcvJYg8ZVa2LJfPLP5itxPcThHu0JWE5jUTQR3MUUByfkiFiFjqvnFM1X3LrtHvADXhSgL2plyJXczFUR09H~G32slhAVRthiut0BBIPIwU2AuGO2MJFgT-2ob1Aw__" alt="Lovable.dev" class="mx-auto" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-xs text-pink-400 font-semibold\'>Lovable.dev</span>';">
+                    </a
+                    </div>
+            </div>
+             <h3 class="text-xl font-semibold text-center mt-16 mb-6 text-white">Experience with BD Content Creators</h3>
+             <p class="text-center max-w-xl mx-auto text-base text-slate-400 leading-relaxed">
+                 I enjoy collaborating with fellow Bangladeshis in the digital space, helping YouTubers, streamers, and influencers enhance their visual identity through custom thumbnails and graphics tailored to their audience.
+             </p>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 md:py-28 pattern-bg fade-in-section">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-heading">Let's Create Something</h2>
+            <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-xl border border-slate-100">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-semibold mb-6 text-slate-800">Send a Project Inquiry</h3>
+                        <form id="contact-form" action="#" method="POST">
+                            <div class="mb-5"><label for="name" class="block text-slate-700 text-sm font-medium mb-1.5">Name</label><input type="text" id="name" name="name" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg form-input text-sm" placeholder="Your Full Name"></div>
+                            <div class="mb-5"><label for="email" class="block text-slate-700 text-sm font-medium mb-1.5">Email</label><input type="email" id="email" name="email" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg form-input text-sm" placeholder="your.email@example.com"></div>
+                            <div class="mb-6"><label for="message" class="block text-slate-700 text-sm font-medium mb-1.5">Project Details</label><textarea id="message" name="message" rows="5" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg form-input text-sm" placeholder="Tell me about your project..."></textarea></div>
+                            <div><button type="submit" class="w-full cta-button bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out flex items-center justify-center space-x-2 transform hover:-translate-y-0.5"><ion-icon name="send-outline" class="text-xl"></ion-icon><span>Submit Inquiry</span></button></div>
+                             <p id="form-status" class="mt-4 text-sm text-center h-4"></p>
+                        </form>
+                    </div>
+                    <div class="mt-6 md:mt-0">
+                         <h3 class="text-xl md:text-2xl font-semibold mb-6 text-slate-800">Direct Contact</h3>
+                         <p class="text-slate-600 mb-6 leading-relaxed text-sm md:text-base">For quick questions or direct collaboration offers, feel free to reach out via:</p>
+                         <div class="space-y-4 mb-8">
+                             <a href="https://wa.me/8801797488769" target="_blank" rel="noopener noreferrer" class="contact-link-card flex items-center p-4 bg-slate-50 rounded-lg shadow-sm hover:shadow-md transition duration-300 border border-slate-200 group"><ion-icon name="logo-whatsapp" class="text-2xl text-green-500 mr-3 group-hover:scale-110 transition-transform"></ion-icon><div><span class="font-medium text-slate-800 block">WhatsApp</span><span class="text-xs text-slate-500">+880 1797-488769</span></div></a>
+                             <a href="https://t.me/choiceiq" target="_blank" rel="noopener noreferrer" class="contact-link-card flex items-center p-4 bg-slate-50 rounded-lg shadow-sm hover:shadow-md transition duration-300 border border-slate-200 group"><ion-icon name="paper-plane-outline" class="text-2xl text-blue-500 mr-3 group-hover:scale-110 transition-transform"></ion-icon><div><span class="font-medium text-slate-800 block">Telegram</span><span class="text-xs text-slate-500">@choiceiq</span></div></a>
+                         </div>
+                         <div>
+                             <h4 class="text-lg font-semibold mb-3 text-slate-700">Follow My Journey</h4>
+                             <div class="flex space-x-4">
+                                <a href="#" aria-label="LinkedIn Profile" class="social-link text-slate-500 hover:text-blue-700 transition duration-300"><ion-icon name="logo-linkedin" class="text-2xl"></ion-icon></a>
+                                <a href="#" aria-label="GitHub Profile" class="social-link text-slate-500 hover:text-slate-900 transition duration-300"><ion-icon name="logo-github" class="text-2xl"></ion-icon></a>
+                                <a href="#" aria-label="https://www.facebook.com/share/18ok1Q6EP1/" class="social-link text-slate-500 hover:text-blue-600 transition duration-300"><ion-icon name="logo-facebook" class="text-2xl"></ion-icon></a>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Ad Unit 4 -->
+    <div class="container mx-auto px-4 sm:px-6 py-8">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9280900965782857"
+         data-ad-slot="6060236183"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+    <footer class="bg-slate-900 text-slate-400 py-10">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <div class="mb-4 flex justify-center space-x-6">
+                 <a href="https://wa.me/8801797488769" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="hover:text-green-400 transition duration-300"><ion-icon name="logo-whatsapp" class="text-xl"></ion-icon></a>
+                <a href="https://t.me/choiceiq" target="_blank" rel="noopener noreferrer" aria-label="Contact on Telegram" class="hover:text-blue-400 transition duration-300"><ion-icon name="paper-plane-outline" class="text-xl"></ion-icon></a>
+                <a href="#" aria-label="GitHub Profile" class="hover:text-white transition duration-300"><ion-icon name="logo-github" class="text-xl"></ion-icon></a>
+                 <a href="#" aria-label="LinkedIn Profile" class="hover:text-blue-400 transition duration-300"><ion-icon name="logo-linkedin" class="text-xl"></ion-icon></a>
+            </div>
+            <p class="text-sm">&copy; <span id="current-year"></span> Choice IQ (Ashfaq Al Shafin). All Rights Reserved.</p> <p class="text-xs mt-1">Based in Sylhet, Bangladesh | <a href="#home" class="hover:text-white">Back to Top</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('main-header');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconSvg = mobileMenuButton.querySelector('svg');
+            const menuIconPath = menuIconSvg ? menuIconSvg.querySelector('path') : null;
+            const openIconD = "M6 18L18 6M6 6l12 12"; // X icon
+            const closedIconD = "M4 6h16M4 12h16m-7 6h7"; // Burger icon
+
+            // --- Header Scroll Effect ---
+            const handleScroll = () => {
+                header.classList.toggle('header-scrolled', window.scrollY > 30);
+            };
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
+
+            // --- Mobile Menu Toggle ---
+            if (mobileMenuButton && mobileMenu && menuIconPath) {
+                mobileMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isHidden = mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', !isHidden);
+                    menuIconPath.setAttribute('d', isHidden ? closedIconD : openIconD);
+                });
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        menuIconPath.setAttribute('d', closedIconD);
+                    });
+                });
+                 document.addEventListener('click', (event) => {
+                    if (!header.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                         mobileMenuButton.setAttribute('aria-expanded', 'false');
+                         menuIconPath.setAttribute('d', closedIconD);
+                    }
+                 });
+            }
+
+            // --- Dynamic Year ---
+            const currentYearElement = document.getElementById('current-year');
+             if (currentYearElement) currentYearElement.textContent = new Date().getFullYear();
+
+            // --- Intersection Observer ---
+            const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.1 };
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                 if (section.id !== 'home') observer.observe(section);
+            });
+
+             // --- Smooth Scrolling ---
+             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.length > 1 && targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            const headerOffset = header.offsetHeight || 60;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+             // --- YouTube Subscriber Count Fetch ---
+             const fetchYouTubeSubscribers = async () => {
+                // !!! SECURITY WARNING: Embedding API keys directly in client-side code is insecure!
+                // Anyone can view your key. For production, use a server-side proxy.
+                const apiKey = "AIzaSyCe7qJIiMNk8EgC8KjUtHnQe_Eck5g_uTw"; // YOUR PROVIDED API KEY
+                // IMPORTANT: Replace with YOUR actual YouTube Channel ID (starts with UC...)
+                const channelId = "UCseFEz1aC1qWq_YCAy7baAA"; // Placeholder: Google Developers Channel ID
+                const apiUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`;
+                const subsElement = document.getElementById('youtube-subs-count');
+
+                if (!subsElement) return; // Exit if element not found
+
+                try {
+                    const response = await fetch(apiUrl);
+                    if (!response.ok) {
+                        console.error("YouTube API Error:", response.status, await response.text());
+                        subsElement.textContent = 'Error';
+                        return;
+                    }
+                    const data = await response.json();
+                    if (data.items && data.items.length > 0) {
+                        const count = data.items[0].statistics.subscriberCount;
+                        // Format the number (optional)
+                        const formattedCount = Number(count).toLocaleString(); // e.g., 1,234,567
+                        subsElement.textContent = formattedCount;
+                    } else {
+                         subsElement.textContent = 'N/A'; // Channel not found or no stats
+                         console.warn("YouTube channel data not found for ID:", channelId);
+                    }
+                } catch (error) {
+                    console.error("Failed to fetch YouTube subscribers:", error);
+                    subsElement.textContent = 'Error';
+                }
+             };
+
+             // --- Fetch YouTube Subs on Load ---
+             fetchYouTubeSubscribers();
+
+             // --- Telegram Count Placeholder ---
+             // NOTE: Real-time Telegram count is not feasible client-side without a bot/backend.
+             // The link is provided in the HTML structure instead.
+
+             // --- Contact Form Simulation ---
+             const contactForm = document.getElementById('contact-form');
+             const formStatus = document.getElementById('form-status');
+             if (contactForm && formStatus) {
+                 contactForm.addEventListener('submit', function(e) {
+                     e.preventDefault();
+                     const submitButton = contactForm.querySelector('button[type="submit"]');
+                     const buttonText = submitButton.querySelector('span');
+                     const buttonIcon = submitButton.querySelector('ion-icon');
+
+                     formStatus.textContent = 'Sending...';
+                     formStatus.className = 'mt-4 text-sm text-center text-blue-600';
+                     submitButton.disabled = true;
+                     buttonText.textContent = 'Submitting...';
+                     if(buttonIcon) { buttonIcon.setAttribute('name', 'time-outline'); buttonIcon.classList.add('animate-spin'); }
+
+                     setTimeout(() => {
+                         const success = Math.random() > 0.2;
+                         formStatus.textContent = success ? 'Inquiry sent successfully!' : 'Submission failed. Please try again.';
+                         formStatus.className = `mt-4 text-sm text-center ${success ? 'text-green-600' : 'text-red-600'}`;
+                         if(success) contactForm.reset();
+
+                         submitButton.disabled = false;
+                         buttonText.textContent = 'Submit Inquiry';
+                         if(buttonIcon) { buttonIcon.setAttribute('name', 'send-outline'); buttonIcon.classList.remove('animate-spin'); }
+                         setTimeout(() => { formStatus.textContent = ''; }, 5000);
+                     }, 2000);
+                 });
+             }
+        });
+    </script>
+
+</body>
+</html>
